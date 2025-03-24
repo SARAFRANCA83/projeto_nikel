@@ -24,8 +24,4 @@ A estrutura do projeto é organizada da seguinte maneira:
 - `js/index.js`: Arquivo JavaScript para funcionalidades dinâmicas (como login e cadastro).
 - `assets/images/`: Pasta contendo as imagens usadas no layout (como logos e ícones).
 
-## Como Rodar o Projeto
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/nikel.git
