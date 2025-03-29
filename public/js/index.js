@@ -14,21 +14,13 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
 
   const account = getAccount(email);
 
-  if (!account) {
+  if (!account || account.password !== password) {
     alert("Ops! Verifique o usuário ou a senha.");
     return;
   }
 
-  if (account) {
-    if (account.password !== password) {
-      alert("Ops! Verifique o usuário ou a senha.");
-      return;
-    }
-
-    saveSession(email, checksession);
-
-    window.location = "home.html";
-  }
+  saveSession(email, checksession);
+  window.location = "home.html";
 });
 
 //CRIAR CONTA
@@ -65,8 +57,6 @@ function checkLogger() {
   }
 
   if (logged) {
-    saveSession(logged, session);
-
     window.location.href = "home.html";
   }
 }
@@ -79,15 +69,10 @@ function saveSession(data, saveSession) {
   if (saveSession) {
     localStorage.setItem("session", data);
   }
-
-  sessionStorage.setItem("logger", data);
+  sessionStorage.setItem("logged", data); // Corrigido de "logger" para "logged"
 }
 
 function getAccount(key) {
   const account = localStorage.getItem(key);
-
-  if (account) {
-    return JSON.parse(account);
-  }
-  return "";
+  return account ? JSON.parse(account) : "";
 }
